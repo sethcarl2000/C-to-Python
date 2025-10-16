@@ -41,5 +41,15 @@ class Mandel{
   double *_img;  // image buffer
 };
 
-  
+#ifdef EXTERNC
+extern "C" {
+#endif 
+
+//return the volume of a d-dimensional hypersphere using 'N' points
+double HSVolume(int d, unsigned long long N, double r); 
+
+#ifdef EXTERNC
+}
+#endif
+
 #endif // block to ensure header is only compiled once

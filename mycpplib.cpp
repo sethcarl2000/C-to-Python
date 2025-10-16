@@ -1,6 +1,7 @@
 #include "mycpplib.h"
 #include <stdlib.h>
 #include <stdio.h>
+#include <time.h>
 
 // constructor
 Mandel::Mandel(double re1, double re2, double im1, double im2) :
@@ -59,8 +60,36 @@ void Mandel::calculate(){
   }
 }
 
-
 Mandel::~Mandel(){
   if (_img) delete [] _img;
 }
+
+#ifdef EXTERNC
+extern "C" {
+#endif
+
+//compute the volume of a d-dimensional hypersphere by the 'stone-throwing' method. 
+double HSVolume(int d, unsigned long long N, double r)
+{
+  srand48((long)time(NULL));
+
+  unsigned long long count=0;
+  for (unsigned long long i=0; i<N; i++) {
+
+    //initialize the X-vector with pseudo-random vals
+    double square_radius=0.; 
+    for (int j=0; j<d; j++) {
+      double x_j = drand48();
+      square_radius += x_j*x_j; 
+    } 
+
+    if (square_radius < 1.) count++; 
+  }
+
+  return pow(2., d)*((double)count)/((double)N); 
+}
+
+#ifdef EXTERNC
+}
+#endif
 

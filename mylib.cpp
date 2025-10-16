@@ -18,7 +18,7 @@ double findPi(long nthrows=100*1000*1000){
   for (int i=0; i<nthrows; ++i){
     double x=drand48();
     double y=drand48();
-    if (x*x+y*y < 1) ++count;
+    if (x*x + y*y < 1) ++count;
   }
   return 4.0*count/nthrows;
 }
