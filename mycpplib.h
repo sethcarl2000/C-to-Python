@@ -41,6 +41,8 @@ class Mandel{
   double *_img;  // image buffer
 };
 
+long long int count3d_cpp(int n); 
+
 #ifdef EXTERNC
 extern "C" {
 #endif 

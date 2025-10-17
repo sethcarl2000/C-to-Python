@@ -12,7 +12,19 @@ Mandel::Mandel(double re1, double re2, double im1, double im2) :
   _img=0;
 }
 
-
+//a simple counting algorithm
+long long int count3d(int n)
+{ 
+  long long int count=0; 
+  for (int i0=0; i0<n; i0++) {
+    for (int i1=0; i1<n; i1++) {
+      for (int i2=0; i2<n; i2++) {
+        count++;
+      }
+    }
+  }
+  return count; 
+}
 
 int Mandel::mandel_test(double c_re, double c_im){  
   // If a point is in the set, its magnitude will remain bounded by
